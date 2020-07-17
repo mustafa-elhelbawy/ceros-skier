@@ -47,6 +47,7 @@ export const SKIER_DIRECTION_ASSET = {
 };
 
 export const KEYS = {
+    SPACE : 32,
     LEFT : 37,
     RIGHT : 39,
     UP : 38,
