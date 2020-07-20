@@ -63,7 +63,7 @@ export class Game {
     handleKeyDown(event) {
         const body = document.querySelector('body');
         switch(event.which) {
-            case Constants.KEYS.SPACE:
+            case Constants.KEYS.ENTER:
                 body.classList.add('paused');
                 this.skier.turnSTOP();
                 event.preventDefault();
@@ -83,6 +83,10 @@ export class Game {
             case Constants.KEYS.DOWN:
                 body.classList.remove('paused');
                 this.skier.turnDown();
+                event.preventDefault();
+                break;
+            case Constants.KEYS.SPACE:
+                this.skier.moveSkierJump();
                 event.preventDefault();
                 break;
         }

@@ -29,6 +29,9 @@ export class Skier extends Entity {
             case Constants.SKIER_DIRECTIONS.DOWN:
                 this.moveSkierDown();
                 break;
+            case Constants.SKIER_DIRECTIONS.JUMP:
+                this.moveSkierJump();
+                break;
             case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
                 this.moveSkierRightDown();
                 break;
@@ -48,6 +51,10 @@ export class Skier extends Entity {
         this.y += this.speed;
     }
 
+    moveSkierDown() {
+        this.y += this.speed;
+    }
+
     moveSkierRightDown() {
         this.x += this.speed / Constants.SKIER_DIAGONAL_SPEED_REDUCER;
         this.y += this.speed / Constants.SKIER_DIAGONAL_SPEED_REDUCER;
@@ -59,6 +66,15 @@ export class Skier extends Entity {
 
     moveSkierUp() {
         this.y -= Constants.SKIER_STARTING_SPEED;
+    }
+
+    moveSkierJump() {
+        const direction = this.direction;
+        this.y += this.speed / Constants.SKIER_DIAGONAL_SPEED_REDUCER;
+        this.setDirection(Constants.SKIER_DIRECTIONS.JUMP)
+        setTimeout(() => {
+          this.setDirection(direction);
+        }, 300);
     }
 
     turnLeft() {
@@ -75,7 +91,7 @@ export class Skier extends Entity {
             this.moveSkierRight();
         }
         else {
-            this.setDirection(this.direction + 1);
+            this.setDirection(this.direction < 5 ? this.direction + 1 : 5);
         }
     }
 
@@ -115,8 +131,15 @@ export class Skier extends Entity {
             return intersectTwoRects(skierBounds, obstacleBounds);
         });
 
+
         if(collision) {
-            this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
+            const rocksAsset = [Constants.ROCK1, Constants.ROCK2]; // Rocks assets
+            let assetName = collision.assetName;
+            if (rocksAsset.includes(assetName)) {
+              this.moveSkierJump();
+            } else {
+                this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
+            }
         }
     };
 }
