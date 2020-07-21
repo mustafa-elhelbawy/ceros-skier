@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "predeploy": "webpack --mode production && cp -r ./img ./dist",
+    "predeploy": "webpack --mode production",
     "deploy": "gh-pages -d dist",
     "test": "jest"
   },
