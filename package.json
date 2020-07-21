@@ -16,7 +16,7 @@
   },
   "author": "Dan Wash",
   "license": "",
-  "homepage": "https://mustafa-elhelbawy.github.io/ceros-skier/dist/index.html",
+  "homepage": "https://mustafa-elhelbawy.github.io/ceros-skier",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
