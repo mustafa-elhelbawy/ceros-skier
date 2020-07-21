@@ -1,3 +1,13 @@
+## Challenge requirements have been done:
+
+- deploy the changes on the following URL https://mustafa-elhelbawy.github.io/ceros-skier/
+- fixing crash page once the skier crashed, then gamer press LEFT-ARROW
+- setup pause/resuming key using the ENTER => DOWN_ARROW keys 
+- Add jump action for the skier and to automatically jump over the rocks
+- Add unit testing for different skier statuses
+
+
+
 # Ceros Ski Code Challenge
 
 Welcome to the Ceros Code Challenge - Ski Edition!
