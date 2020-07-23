@@ -12,6 +12,7 @@ export const SKIER_JUMP_2 = 'skierJump_2';
 export const SKIER_JUMP_3 = 'skierJump_3';
 export const SKIER_JUMP_4 = 'skierJump_4';
 export const SKIER_JUMP_5 = 'skierJump_5';
+export const RAMP = 'ramp';
 export const TREE = 'tree';
 export const TREE_CLUSTER = 'treeCluster';
 export const ROCK1 = 'rock1';
@@ -32,6 +33,7 @@ export const ASSETS = {
     [SKIER_JUMP_3]: 'img/skier_jump_3.png',
     [SKIER_JUMP_4]: 'img/skier_jump_4.png',
     [SKIER_JUMP_5]: 'img/skier_jump_5.png',
+    [RAMP] : 'img/jump_ramp.png',
     [TREE] : 'img/tree_1.png',
     [TREE_CLUSTER] : 'img/tree_cluster.png',
     [ROCK1] : 'img/rock_1.png',
@@ -55,7 +57,7 @@ export const SKIER_DIRECTION_ASSET = {
     [SKIER_DIRECTIONS.DOWN] : SKIER_DOWN,
     [SKIER_DIRECTIONS.RIGHT_DOWN] : SKIER_RIGHTDOWN,
     [SKIER_DIRECTIONS.RIGHT] : SKIER_RIGHT,
-    [SKIER_DIRECTIONS.JUMP] : SKIER_JUMP_1,
+    [SKIER_DIRECTIONS.JUMP] : SKIER_JUMP_3,
     [SKIER_DIRECTIONS.JUMP_2] : SKIER_JUMP_2,
     [SKIER_DIRECTIONS.JUMP_3] : SKIER_JUMP_3,
     [SKIER_DIRECTIONS.JUMP_4] : SKIER_JUMP_4,

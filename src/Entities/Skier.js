@@ -30,7 +30,7 @@ export class Skier extends Entity {
                 this.moveSkierDown();
                 break;
             case Constants.SKIER_DIRECTIONS.JUMP:
-                this.moveSkierJump();
+                this.moveSkierDown();
                 break;
             case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
                 this.moveSkierRightDown();
@@ -68,20 +68,12 @@ export class Skier extends Entity {
         this.y -= Constants.SKIER_STARTING_SPEED;
     }
 
-    moveSkierJump() {
-        const direction = this.direction;
-        this.y += this.speed / Constants.SKIER_DIAGONAL_SPEED_REDUCER;
-        this.setDirection(Constants.SKIER_DIRECTIONS.JUMP)
-        setTimeout(() => {
-          this.setDirection(direction);
-        }, 300);
-    }
-
-    turnLeft() {
+    turnLeft() {    
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT) {
             this.moveSkierLeft();
         }
         else {
+            this.direction = this.direction === 6 ? 3 : this.direction;
             this.setDirection(this.direction > 1 ? this.direction - 1 : 1);
         }
     }
@@ -91,6 +83,7 @@ export class Skier extends Entity {
             this.moveSkierRight();
         }
         else {
+            this.direction = this.direction === 6 ? 3 : this.direction;
             this.setDirection(this.direction < 5 ? this.direction + 1 : 5);
         }
     }
@@ -101,8 +94,15 @@ export class Skier extends Entity {
         }
     }
 
-    turnDown() {
+    turnDown(jumpNow = false ) {
+        jumpNow ? 
+        this.setDirection(Constants.SKIER_DIRECTIONS.JUMP) :
         this.setDirection(Constants.SKIER_DIRECTIONS.DOWN);
+        if(this.direction === 6) {
+            setTimeout(() => {
+                this.setDirection(Constants.SKIER_DIRECTIONS.DOWN)
+            }, 300);
+        }
     }
 
     turnSTOP() {
@@ -133,10 +133,10 @@ export class Skier extends Entity {
 
 
         if(collision) {
-            const rocksAsset = [Constants.ROCK1, Constants.ROCK2]; // Rocks assets
+            const rocksAsset = [Constants.ROCK1, Constants.ROCK2, Constants.RAMP]; // auto jump asssets
             let assetName = collision.assetName;
             if (rocksAsset.includes(assetName)) {
-              this.moveSkierJump();
+              this.turnDown(true);
             } else {
                 this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
             }

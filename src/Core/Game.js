@@ -86,7 +86,7 @@ export class Game {
                 event.preventDefault();
                 break;
             case Constants.KEYS.SPACE:
-                this.skier.moveSkierJump();
+                this.skier.turnDown(true);
                 event.preventDefault();
                 break;
         }
